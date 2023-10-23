@@ -1,0 +1,9 @@
+project:
+  output-dir: _docs
+
+website:
+  title: "rent"
+  site-url: "https://gilad-rubin.github.io/rent"
+  description: "A project to predict rental prices"
+  repo-branch: main
+  repo-url: "https://github.com/gilad-rubin/rent"
