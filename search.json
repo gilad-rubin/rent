@@ -1,0 +1,51 @@
+[
+  {
+    "objectID": "ingestion.html",
+    "href": "ingestion.html",
+    "title": "Define Prod Inputs",
+    "section": "",
+    "text": "from platform import python_version\npython_version()\n\n'3.12.0'\nimport numpy as np\nimport pandas as pd\nprod_cols = [\"bmi\", \"sex\", \"s1\"]"
+  },
+  {
+    "objectID": "ingestion.html#inputs-enrichment-that-are-not-based-on-currentrecenttime-sensitive-data",
+    "href": "ingestion.html#inputs-enrichment-that-are-not-based-on-currentrecenttime-sensitive-data",
+    "title": "Define Prod Inputs",
+    "section": "Inputs + enrichment that are not based on current/recent/time-sensitive data",
+    "text": "Inputs + enrichment that are not based on current/recent/time-sensitive data\nhelpful question: does it matter if we enrich/calculate it today or tomorrow? if no - then continue here…\nanything that can be calculated in advance - should be. It’s a relatively “small” structured discrete space. these should be updated so that new inference can rely on it examples: join, groupbys, aggregations to create simple rows for query examples: dividing map into regions, enriching each region with certain aspects…\nanything that is specific to inference - Non-discrete, unstructured, too large discrete (specific coordinates, specific address (?)) examples: analyzing free text, enriching geodata, …\nSituation where there’s a new test result and the model needs to add that into the history of the patient so they input the test result and the inference pipeline compiles a new record for the model to predict"
+  },
+  {
+    "objectID": "ingestion.html#feature-are-based-on-real-time-data-calculations",
+    "href": "ingestion.html#feature-are-based-on-real-time-data-calculations",
+    "title": "Define Prod Inputs",
+    "section": "Feature are based on real-time data + calculations",
+    "text": "Feature are based on real-time data + calculations\nhelpful question: does it matter if we enrich/calculate it today or tomorrow? if yes - then continue here…\nStreaming, Feature store\nlocation, address, apt. features\naddress - queries a pre-prepped database to get row (if exists) location - enrichment information is static, but query needs on-demand calculation (there are too many coordinates) apt. features - gets used as input features then transformed via pipeline\nquery on pre-prepped db - update interval (none, daily, monthly, on-demand, etc…) API/query - enrichment (independent of training): geo, external API feature transformations (based on training) - cat encoding, numerical conversion, etc…\nhttps://www.kaggle.com/datasets/rkb0023/houserentpredictiondataset/data\nworking separately on each column or column-set and “registering” the transformation via key/id to the final dataset\nHamilton - handling ingestion (instead of a feature store?)\ncaching, dumping (materialize), lazy evaluate\npipelines within pipelines “double click” to expand\noptional - concatenating a (polars) pipe\napply only to “new” uuids (memoize?) - starting from the last part and going backwards\nadding tags to certain states? for forecasting, for modeling, for preprocessing, …\napplying function/transformer in parallel to multiple columns (e.g. boolean)\nChatGPT converting pandas code adding documentation adding unit-tests handling context (training, inference, streaming)\nstarting from “gross” steps\nrunning a step/pipeline on a different resource\nvery specific code for ml stuff\neasy on-the-spot debugging, testing, viewing, …\nHPO (?)\nchanging the prod inputs doesn’t crash the DAG if later we’re building functions on top of non-selected features\nworking with indices - cache, materialize etc… + querying it… Also - enabling incremental processing for new data instead of rerunning the whole script\nenabling specific feature discovery within a “type” of transformation (calculating aggregation (e.g. “avg”) on multiple features, converting NAs)\nworking with polarify\n\nFeature Store"
+  },
+  {
+    "objectID": "core.html",
+    "href": "core.html",
+    "title": "core",
+    "section": "",
+    "text": "source\n\nfoo\n\n foo ()"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "rent",
+    "section": "",
+    "text": "This file will become your README and also the index of your documentation."
+  },
+  {
+    "objectID": "index.html#install",
+    "href": "index.html#install",
+    "title": "rent",
+    "section": "Install",
+    "text": "Install\npip install rent"
+  },
+  {
+    "objectID": "index.html#how-to-use",
+    "href": "index.html#how-to-use",
+    "title": "rent",
+    "section": "How to use",
+    "text": "How to use\nFill me in please! Don’t forget code examples:\n\n1+1\n\n2"
+  }
+]
